@@ -1,12 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "../include/rope.h"
 
 RopeNode* init_rope_node(RopeNode* parent, int size, char* text)
 {
     RopeNode* node = malloc(sizeof(RopeNode));
-    if(!node || size > ROPE_MAX_LEN)
+    if(!node || size > ROPE_NODE_MAX_LEN)
     {
         free(node); return NULL;
     }
@@ -15,8 +16,7 @@ RopeNode* init_rope_node(RopeNode* parent, int size, char* text)
     node->size = size;
 
     for(int i = 0; i < size; i++)
-    {
-        
+    { 
         node->text[i] = *text;
         text++;
     }
